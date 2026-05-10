@@ -145,8 +145,8 @@ const statsObserver = new IntersectionObserver(entries => {
       statVals.forEach(el => {
         const text = el.textContent;
         if (text.includes('₹')) animateCounter(el, 50, 'L');
-        else if (text === '128') animateCounter(el, 128, '');
-        else if (text === '7') animateCounter(el, 7, '');
+        else if (text === '25') animateCounter(el, 25, '');
+        else if (text === '2') animateCounter(el, 2, '');
         const prefix = text.startsWith('₹') ? '₹' : '';
         if (prefix) {
           const orig = animateCounter;

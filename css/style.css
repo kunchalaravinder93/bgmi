@@ -597,185 +597,138 @@ input, select, textarea, button { font-family: inherit; }
 }
 
 /* Timeline */
-.timeline {
-  display: flex;
-  align-items: flex-start;
-  gap: 0;
-  position: relative;
-}
-.timeline__track {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  right: 20px;
-  height: 1px;
-  background: linear-gradient(to right, var(--clr-orange), rgba(255,69,0,0.2));
-  z-index: 0;
-}
-.timeline__step {
-  flex: 1;
+/* ─── SCHEDULE FLOW ─── */
+.schedule-flow {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 16px;
-  position: relative;
-  z-index: 1;
+  gap: 40px;
+  max-width: 900px;
+  margin: 40px auto 0;
 }
-.timeline__node {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: var(--clr-bg);
-  border: 2px solid rgba(255,69,0,0.3);
+
+.schedule-day {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 32px;
+  position: relative;
+}
+
+.day-label {
+  font-family: var(--font-display);
+  font-size: 20px;
+  color: var(--clr-orange);
+  text-transform: uppercase;
+  letter-spacing: 2px;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: var(--transition);
+  border-right: 1px solid var(--clr-border);
+  height: 100%;
+  padding: 20px 0;
+  background: rgba(255,69,0,0.03);
+  border-radius: var(--radius) 0 0 var(--radius);
 }
-.timeline__node.active {
+
+.schedule-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.schedule-card {
+  display: flex;
+  align-items: center;
+  padding: 24px 32px;
+  gap: 32px;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.schedule-card:hover {
+  transform: translateX(10px);
   border-color: var(--clr-orange);
-  box-shadow: var(--glow-orange);
-  background: rgba(255,69,0,0.2);
 }
-.timeline__node.active::after {
-  content: '';
-  width: 12px; height: 12px;
-  background: var(--clr-orange);
-  border-radius: 50%;
+
+.schedule-card--featured {
+  border-color: rgba(255,69,0,0.4);
+  background: linear-gradient(90deg, rgba(255,69,0,0.08) 0%, transparent 100%);
+  box-shadow: 0 0 30px rgba(255,69,0,0.05);
 }
-.timeline__card {
-  padding: 20px 16px;
-  text-align: center;
-  width: 100%;
-}
-.phase-tag {
+
+.schedule-card__time {
   font-family: var(--font-display);
-  font-size: 10px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--clr-orange);
-  margin-bottom: 8px;
-  display: block;
+  font-size: 13px;
+  color: var(--clr-grey);
+  white-space: nowrap;
+  min-width: 80px;
 }
-.phase-tag--gold { color: var(--clr-gold); }
-.timeline__card h4 {
+
+.schedule-card__content {
+  flex: 1;
+}
+
+.schedule-card__content h4 {
   font-family: var(--font-head);
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 700;
+  color: var(--clr-white);
   margin-bottom: 4px;
 }
-.timeline__card p {
-  font-size: 13px;
+
+.schedule-card__content p {
+  font-size: 14px;
   color: var(--clr-grey);
 }
 
-/* ═══════════════════════════════════════════════
-   BRACKETS
-═══════════════════════════════════════════════ */
-.brackets {
-  background: var(--clr-bg2);
-}
-.bracket-wrapper {
-  display: flex;
-  align-items: center;
-  gap: 0;
-  overflow-x: auto;
-  padding-bottom: 16px;
-}
-.bracket-stage {
-  flex: 0 0 240px;
-}
-.bracket-stage--final { flex: 0 0 260px; }
-.bracket-stage__label {
-  font-family: var(--font-display);
-  font-size: 10px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: var(--clr-grey);
-  text-align: center;
-  margin-bottom: 16px;
-}
-.bracket-matches {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-.bracket-matches--semi {
-  justify-content: center;
-  height: 100%;
-  gap: 60px;
-  padding: 30px 0;
-}
-.match-card {
-  padding: 14px 16px;
-  position: relative;
-}
-.match-card--final {
-  border-color: rgba(255,215,0,0.3) !important;
-  box-shadow: 0 0 30px rgba(255,215,0,0.08);
-  text-align: center;
-  padding: 24px;
-}
-.final-trophy {
-  font-size: 32px;
-  margin-bottom: 12px;
-  filter: drop-shadow(var(--glow-gold));
-}
-.match-team {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 6px 0;
-  border-bottom: 1px solid rgba(255,255,255,0.05);
-}
-.match-team:last-of-type { border-bottom: none; }
-.match-team.winner .team-name { color: var(--clr-orange); }
-.match-team.winner .team-score { color: var(--clr-orange); text-shadow: var(--glow-orange); }
-.team-seed {
-  font-family: var(--font-display);
-  font-size: 10px;
-  color: var(--clr-grey);
-  width: 16px;
-}
-.team-name {
-  flex: 1;
-  font-family: var(--font-head);
-  font-size: 15px;
-  font-weight: 600;
-}
-.team-score {
-  font-family: var(--font-display);
-  font-size: 18px;
-  font-weight: 900;
-  color: var(--clr-grey);
-}
-.match-live, .match-upcoming {
-  display: block;
+.schedule-card__status {
   font-family: var(--font-display);
   font-size: 9px;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   text-transform: uppercase;
-  margin-top: 8px;
-  text-align: center;
+  padding: 4px 12px;
+  border: 1px solid var(--clr-border);
+  border-radius: 4px;
+  color: var(--clr-grey);
 }
-.match-live {
-  color: #00e676;
-  animation: blink 1s infinite;
+
+.status--live {
+  color: var(--clr-orange);
+  border-color: var(--clr-orange);
+  text-shadow: var(--glow-orange);
+  animation: pulse-glow 2s infinite;
 }
-.match-upcoming { color: var(--clr-grey); }
-.bracket-connector {
-  flex: 0 0 80px;
-  align-self: stretch;
-  position: relative;
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(0.98); }
 }
-.bracket-lines {
-  position: absolute;
-  inset: 0;
+
+@media (max-width: 768px) {
+  .schedule-day {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .day-label {
+    border-right: none;
+    border-bottom: 1px solid var(--clr-border);
+    justify-content: flex-start;
+    padding: 10px 20px;
+    background: transparent;
+  }
+  .schedule-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 20px;
+  }
+  .schedule-card:hover {
+    transform: translateY(-5px);
+  }
+  .schedule-card__time {
+    order: -1;
+    min-width: auto;
+  }
 }
-.bracket-lines svg {
-  width: 100%;
-  height: 100%;
-}
+
 
 /* ═══════════════════════════════════════════════
    PRIZES
