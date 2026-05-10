@@ -97,18 +97,100 @@ if (slider) {
 
 buildDots();
 
-/* ── Registration form ── */
+/* ── Hero Slider ── */
+const slides = document.querySelectorAll('.hero__slide');
+let currentSlide = 0;
+
+function nextSlide() {
+  slides[currentSlide].classList.remove('active');
+  currentSlide = (currentSlide + 1) % slides.length;
+  slides[currentSlide].classList.add('active');
+}
+if (slides.length > 0) {
+  setInterval(nextSlide, 5000);
+}
+
+/* ── Registration form logic ── */
+window.toggleTeamFields = function() {
+  const matchType = document.getElementById('matchType').value;
+  const squadFields = document.getElementById('squadFields');
+  const teamNameGroup = document.getElementById('teamNameGroup');
+  
+  if (matchType === 'solo') {
+    squadFields.style.display = 'none';
+    teamNameGroup.style.display = 'none';
+    // Make squad fields not required
+    squadFields.querySelectorAll('input').forEach(input => input.required = false);
+    document.getElementById('teamName').required = false;
+  } else {
+    squadFields.style.display = 'block';
+    teamNameGroup.style.display = 'block';
+    document.getElementById('teamName').required = true;
+  }
+};
+
+// Initialize form state
+document.addEventListener('DOMContentLoaded', () => {
+  if (document.getElementById('matchType')) toggleTeamFields();
+});
+
 window.handleRegister = function(e) {
   e.preventDefault();
   const btn = e.target.querySelector('button[type=submit]');
-  btn.textContent = '⏳ Submitting...';
+  const matchType = document.getElementById('matchType').value;
+  
+  btn.textContent = '⏳ Processing...';
   btn.disabled = true;
+
+  // Collect data
+  const registrationData = {
+    id: Date.now(),
+    matchType,
+    teamName: document.getElementById('teamName').value,
+    captain: {
+      name: document.getElementById('captainName').value,
+      uid: document.getElementById('captainUid').value
+    },
+    members: matchType === 'squad' ? [
+      { name: document.getElementById('m2Name').value, uid: document.getElementById('m2Uid').value },
+      { name: document.getElementById('m3Name').value, uid: document.getElementById('m3Uid').value },
+      { name: document.getElementById('m4Name').value, uid: document.getElementById('m4Uid').value }
+    ] : [],
+    contact: {
+      whatsapp: document.getElementById('whatsapp').value,
+      email: document.getElementById('email').value
+    },
+    timestamp: new Date().toLocaleString()
+  };
+
+  // Save to LocalStorage
+  const existingRegistrations = JSON.parse(localStorage.getItem('bgmi_registrations') || '[]');
+  existingRegistrations.push(registrationData);
+  localStorage.setItem('bgmi_registrations', JSON.stringify(existingRegistrations));
+
   setTimeout(() => {
     document.getElementById('regModal').classList.remove('hidden');
     e.target.reset();
-    btn.textContent = '⚡ Register Squad Now';
+    toggleTeamFields();
+    btn.textContent = '⚡ Confirm Registration';
     btn.disabled = false;
-  }, 1400);
+  }, 1200);
+};
+
+window.viewRegistrations = function() {
+  const regs = JSON.parse(localStorage.getItem('bgmi_registrations') || '[]');
+  if (regs.length === 0) {
+    alert("No registrations found yet!");
+    return;
+  }
+  
+  console.log("Current Registrations:", regs);
+  let summary = `You have ${regs.length} registration(s):\n\n`;
+  regs.forEach((r, i) => {
+    summary += `${i+1}. ${r.matchType.toUpperCase()} - ${r.teamName || 'Solo'} (Captain: ${r.captain.name})\n`;
+  });
+  summary += "\nCheck the browser console (F12) for full JSON details.";
+  alert(summary);
 };
 
 window.closeModal = function() {

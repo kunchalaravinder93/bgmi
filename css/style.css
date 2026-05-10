@@ -289,10 +289,32 @@ input, select, textarea, button { font-family: inherit; }
   padding: 120px 24px 60px;
 }
 
+.hero__slider {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+
+.hero__slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out, transform 10s linear;
+  transform: scale(1.1);
+}
+
+.hero__slide.active {
+  opacity: 0.4; /* Slightly dimmer for readability */
+  transform: scale(1);
+}
+
 .hero__canvas {
   position: absolute;
   inset: 0;
   z-index: 0;
+  pointer-events: none;
 }
 
 .hero__grid-overlay {
@@ -987,6 +1009,30 @@ input:focus, select:focus {
 }
 select option { background: var(--clr-bg2); }
 input::placeholder { color: rgba(255,255,255,0.25); }
+.form-divider {
+  margin: 32px 0 20px;
+  position: relative;
+  text-align: center;
+}
+.form-divider::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--clr-border), transparent);
+}
+.form-divider span {
+  position: relative;
+  background: var(--clr-bg2);
+  padding: 0 16px;
+  font-family: var(--font-display);
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--clr-orange);
+}
 .form-note {
   font-size: 12px;
   color: var(--clr-grey);

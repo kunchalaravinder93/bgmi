@@ -41,6 +41,11 @@
 
 <!-- ─── HERO ─── -->
 <section class="hero" id="hero">
+  <div class="hero__slider" id="heroSlider">
+    <div class="hero__slide active" style="background-image: url('https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80&w=1920')"></div>
+    <div class="hero__slide" style="background-image: url('https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&q=80&w=1920')"></div>
+    <div class="hero__slide" style="background-image: url('https://images.unsplash.com/photo-1538481199705-c710c4e965fc?auto=format&fit=crop&q=80&w=1920')"></div>
+  </div>
   <canvas class="hero__canvas" id="particleCanvas"></canvas>
   <div class="hero__grid-overlay"></div>
   <div class="hero__scanlines"></div>
@@ -55,7 +60,7 @@
       <span class="hero__title--line2">INFERNO <em>CUP</em></span>
       <span class="hero__title--line3">2025</span>
     </h1>
-    <p class="hero__sub">India's Most Brutal Battle Royale Championship</p>
+    <p class="hero__sub">Join the Elite Battle Royale: Solo 100 or Squad 25 Room Matches</p>
     <div class="hero__stats">
       <div class="hero__stat">
         <span class="stat-val">₹50L</span>
@@ -63,28 +68,28 @@
       </div>
       <div class="hero__divider"></div>
       <div class="hero__stat">
-        <span class="stat-val">128</span>
-        <span class="stat-label">Teams</span>
+        <span class="stat-val">2</span>
+        <span class="stat-label">Event Modes</span>
       </div>
       <div class="hero__divider"></div>
       <div class="hero__stat">
-        <span class="stat-val">7</span>
-        <span class="stat-label">Days</span>
+        <span class="stat-val">200</span>
+        <span class="stat-label">Total Slots</span>
       </div>
     </div>
     <div class="hero__actions">
       <a href="#register" class="btn btn--primary">
         <span class="btn__glow"></span>
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-        Register Your Squad
+        Register Now
       </a>
-      <a href="#tournament" class="btn btn--ghost">Explore Tournament</a>
+      <a href="#tournament" class="btn btn--ghost">Tournament Details</a>
     </div>
   </div>
 
   <!-- Countdown -->
   <div class="hero__countdown" id="countdown">
-    <p class="countdown__label">Tournament Begins In</p>
+    <p class="countdown__label">Grand Showdown Begins In</p>
     <div class="countdown__blocks">
       <div class="countdown__block"><span id="cd-days">00</span><small>Days</small></div>
       <div class="countdown__sep">:</div>
@@ -113,28 +118,28 @@
 
     <div class="info-grid">
       <div class="glass-card info-card">
+        <div class="info-card__icon">🎮</div>
+        <h3>Squad Room</h3>
+        <p>25 Teams Match</p>
+        <span class="info-card__detail">4 Members Per Team</span>
+      </div>
+      <div class="glass-card info-card">
+        <div class="info-card__icon">👤</div>
+        <h3>Solo Room</h3>
+        <p>100 Members Match</p>
+        <span class="info-card__detail">Lone Wolf Combat</span>
+      </div>
+      <div class="glass-card info-card">
         <div class="info-card__icon">🗓️</div>
         <h3>Schedule</h3>
-        <p>June 14 – June 21, 2025</p>
-        <span class="info-card__detail">7 Days of Non-Stop Combat</span>
+        <p>June 14 – 15, 2025</p>
+        <span class="info-card__detail">2 Days of Pure Action</span>
       </div>
       <div class="glass-card info-card">
         <div class="info-card__icon">📍</div>
-        <h3>Format</h3>
-        <p>Online + LAN Finals</p>
-        <span class="info-card__detail">Hyderabad LAN Arena — Day 7</span>
-      </div>
-      <div class="glass-card info-card">
-        <div class="info-card__icon">🎮</div>
-        <h3>Game Mode</h3>
-        <p>Classic Squad TPP</p>
-        <span class="info-card__detail">Erangel · Miramar · Vikendi</span>
-      </div>
-      <div class="glass-card info-card">
-        <div class="info-card__icon">👥</div>
-        <h3>Team Size</h3>
-        <p>4 Players + 1 Sub</p>
-        <span class="info-card__detail">128 Teams Competing</span>
+        <h3>Platform</h3>
+        <p>Online Tournament</p>
+        <span class="info-card__detail">Room ID & Pass via Email/WhatsApp</span>
       </div>
     </div>
 
@@ -144,33 +149,33 @@
       <div class="timeline__step">
         <div class="timeline__node active"></div>
         <div class="glass-card timeline__card">
-          <span class="phase-tag">Phase 1</span>
-          <h4>Qualifiers</h4>
-          <p>Jun 14–15 · 128 Teams · Online</p>
+          <span class="phase-tag">Day 1</span>
+          <h4>Solo Qualifiers</h4>
+          <p>Jun 14 · 100 Players · 3 Matches</p>
+        </div>
+      </div>
+      <div class="timeline__step">
+        <div class="timeline__node active"></div>
+        <div class="glass-card timeline__card">
+          <span class="phase-tag">Day 1</span>
+          <h4>Squad Heat 1</h4>
+          <p>Jun 14 · 12 Teams · Online</p>
+        </div>
+      </div>
+      <div class="timeline__step">
+        <div class="timeline__node active"></div>
+        <div class="glass-card timeline__card">
+          <span class="phase-tag">Day 2</span>
+          <h4>Squad Heat 2</h4>
+          <p>Jun 15 · 13 Teams · Online</p>
         </div>
       </div>
       <div class="timeline__step">
         <div class="timeline__node"></div>
         <div class="glass-card timeline__card">
-          <span class="phase-tag">Phase 2</span>
-          <h4>Group Stage</h4>
-          <p>Jun 16–18 · 64 Teams · Online</p>
-        </div>
-      </div>
-      <div class="timeline__step">
-        <div class="timeline__node"></div>
-        <div class="glass-card timeline__card">
-          <span class="phase-tag">Phase 3</span>
-          <h4>Semi Finals</h4>
-          <p>Jun 19–20 · 16 Teams · Online</p>
-        </div>
-      </div>
-      <div class="timeline__step">
-        <div class="timeline__node"></div>
-        <div class="glass-card timeline__card">
-          <span class="phase-tag phase-tag--gold">Phase 4</span>
-          <h4>Grand Finals</h4>
-          <p>Jun 21 · 8 Teams · LAN</p>
+          <span class="phase-tag phase-tag--gold">Grand Finale</span>
+          <h4>Final Battle</h4>
+          <p>Jun 15 · Top Players & Teams</p>
         </div>
       </div>
     </div>
@@ -489,48 +494,93 @@
           <div class="slots-bar">
             <div class="slots-fill" style="width:78%"></div>
           </div>
-          <span class="slots-text">28 slots remaining of 128</span>
+          <span class="slots-text">42 slots remaining of 200</span>
         </div>
       </div>
 
       <form class="glass-card register__form" id="regForm" onsubmit="handleRegister(event)">
-        <h3>Team Registration</h3>
+        <h3>Registration Details</h3>
+        
         <div class="form-group">
-          <label>Team Name</label>
-          <input type="text" placeholder="e.g. Inferno Warriors" required />
+          <label>Match Type</label>
+          <select id="matchType" onchange="toggleTeamFields()" required>
+            <option value="solo">Solo (100 Players Room)</option>
+            <option value="squad" selected>Squad (25 Teams Room)</option>
+          </select>
         </div>
+
+        <div class="form-group" id="teamNameGroup">
+          <label>Team Name</label>
+          <input type="text" id="teamName" placeholder="e.g. Inferno Warriors" required />
+        </div>
+
+        <div class="form-divider"><span>Captain (Player 1)</span></div>
         <div class="form-row">
           <div class="form-group">
             <label>Captain Name</label>
-            <input type="text" placeholder="In-game name" required />
+            <input type="text" id="captainName" placeholder="In-game name" required />
           </div>
           <div class="form-group">
-            <label>BGMI UID</label>
-            <input type="text" placeholder="5XXXXXXXXX" required />
+            <label>Captain BGMI UID</label>
+            <input type="text" id="captainUid" placeholder="5XXXXXXXXX" required />
           </div>
         </div>
-        <div class="form-group">
-          <label>WhatsApp Number</label>
-          <input type="tel" placeholder="+91 98765 43210" required />
+
+        <div id="squadFields">
+          <div class="form-divider"><span>Team Member 2</span></div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Member 2 Name</label>
+              <input type="text" id="m2Name" placeholder="In-game name" />
+            </div>
+            <div class="form-group">
+              <label>Member 2 BGMI UID</label>
+              <input type="text" id="m2Uid" placeholder="5XXXXXXXXX" />
+            </div>
+          </div>
+
+          <div class="form-divider"><span>Team Member 3</span></div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Member 3 Name</label>
+              <input type="text" id="m3Name" placeholder="In-game name" />
+            </div>
+            <div class="form-group">
+              <label>Member 3 BGMI UID</label>
+              <input type="text" id="m3Uid" placeholder="5XXXXXXXXX" />
+            </div>
+          </div>
+
+          <div class="form-divider"><span>Team Member 4</span></div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Member 4 Name</label>
+              <input type="text" id="m4Name" placeholder="In-game name" />
+            </div>
+            <div class="form-group">
+              <label>Member 4 BGMI UID</label>
+              <input type="text" id="m4Uid" placeholder="5XXXXXXXXX" />
+            </div>
+          </div>
         </div>
-        <div class="form-group">
-          <label>Email Address</label>
-          <input type="email" placeholder="captain@team.com" required />
+
+        <div class="form-divider"><span>Contact Details</span></div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>WhatsApp Number</label>
+            <input type="tel" id="whatsapp" placeholder="+91 98765 43210" required />
+          </div>
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" id="email" placeholder="captain@team.com" required />
+          </div>
         </div>
-        <div class="form-group">
-          <label>Player Tier</label>
-          <select>
-            <option>Conqueror</option>
-            <option>Ace Master</option>
-            <option>Ace</option>
-            <option>Crown</option>
-          </select>
-        </div>
+
         <button type="submit" class="btn btn--primary btn--full">
           <span class="btn__glow"></span>
-          ⚡ Register Squad Now
+          ⚡ Confirm Registration
         </button>
-        <p class="form-note">By registering you agree to the tournament rules and code of conduct.</p>
+        <p class="form-note">Data is saved securely in local storage. <a href="javascript:void(0)" onclick="viewRegistrations()" style="color:var(--clr-orange)">View my registrations</a></p>
       </form>
     </div>
   </div>
