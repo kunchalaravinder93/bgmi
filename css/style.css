@@ -236,15 +236,11 @@ input, select, textarea, button { font-family: inherit; }
   padding-left: 24px;
   border-left: 1px solid var(--clr-border);
 }
-.social-icon {
-  font-family: var(--font-display);
-  font-size: 11px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: var(--clr-grey);
-  transition: var(--transition);
-}
 .social-icon:hover { color: var(--clr-orange); }
+
+@media (max-width: 992px) {
+  .nav__socials { display: none; }
+}
 
 .nav__burger {
   display: none;
@@ -479,6 +475,7 @@ input, select, textarea, button { font-family: inherit; }
   gap: 40px;
   margin-bottom: 48px;
   animation: fadeDown 0.8s 0.3s ease both;
+  flex-wrap: wrap; /* Ensure stats wrap on mobile */
 }
 .hero__stat {
   text-align: center;
@@ -541,6 +538,7 @@ input, select, textarea, button { font-family: inherit; }
   border-radius: var(--radius);
   padding: 20px 28px;
   min-width: 90px;
+  flex: 1; /* Allow blocks to shrink if needed */
   text-align: center;
   backdrop-filter: blur(20px);
 }
@@ -623,6 +621,12 @@ input, select, textarea, button { font-family: inherit; }
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
   margin-bottom: 64px;
+}
+@media (max-width: 992px) {
+  .info-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 580px) {
+  .info-grid { grid-template-columns: 1fr; }
 }
 .info-card {
   padding: 32px 24px;
@@ -1419,34 +1423,41 @@ input::placeholder { color: rgba(255,255,255,0.25); }
   .section { padding: 60px 0; }
   .section-header { margin-bottom: 40px; }
   .nav__links { display: none; }
+  .nav__inner { padding: 12px 20px; }
   .nav__burger { display: flex; }
-  .hero__stats { gap: 15px; }
-  .hero__title--line1 { font-size: 80px; }
-  .hero__title--line2 { font-size: 50px; }
-  .hero__actions { flex-direction: column; align-items: center; width: 100%; }
+  
+  .hero__content { padding: 0 20px; }
+  .hero__stats { gap: 20px; }
+  .hero__stat { flex: 1 1 100px; }
+  .hero__divider { display: none; }
+  
+  .hero__title--line1 { font-size: clamp(50px, 15vw, 80px); }
+  .hero__title--line2 { font-size: clamp(30px, 10vw, 50px); }
+  .hero__title--line3 { letter-spacing: 8px; }
+  
+  .hero__actions { flex-direction: column; align-items: stretch; width: 100%; max-width: 320px; margin: 0 auto; }
   .btn { width: 100%; justify-content: center; }
-  .countdown__blocks { gap: 6px; }
-  .countdown__block { padding: 12px 10px; min-width: 60px; }
-  .countdown__block span { font-size: 28px; }
-  .timeline { flex-direction: column; }
-  .timeline__track { display: none; }
-  .timeline__step { flex-direction: row; align-items: flex-start; width: 100%; }
-  .timeline__card { text-align: left; }
+  
+  .countdown__blocks { gap: 8px; flex-wrap: wrap; justify-content: center; }
+  .countdown__block { padding: 12px 10px; min-width: 70px; flex: 0 1 auto; }
+  .countdown__block span { font-size: 24px; }
+  .countdown__sep { display: none; }
+  
   .prize-podium { flex-direction: column; align-items: center; gap: 30px; }
   .prize-card--1 { transform: none; order: -1; }
   .prize-card--1:hover { transform: none; }
   .testimonial-card { flex: 0 0 100%; padding: 24px; }
-  .footer__links { grid-template-columns: 1fr; gap: 24px; text-align: center; }
-  .bracket-wrapper { flex-direction: column; align-items: center; }
-  .bracket-connector { display: none; }
-  .bracket-stage { flex: none; width: 100%; margin-bottom: 32px; }
-  .nav__inner { padding: 12px 20px; }
+  .footer__links { grid-template-columns: 1fr; gap: 32px; text-align: center; }
+  .footer__inner { grid-template-columns: 1fr; gap: 40px; text-align: center; }
+  .footer__brand { display: flex; flex-direction: column; align-items: center; }
+  .footer__bottom { flex-direction: column; gap: 12px; text-align: center; }
   .register__cta-card { padding: 24px; }
+  .winners-grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 480px) {
-  .hero__title--line1 { font-size: 60px; letter-spacing: -2px; }
-  .hero__title--line2 { font-size: 40px; }
-  .countdown__sep { font-size: 20px; }
-  .section-title { font-size: 28px; }
+  .section-title { font-size: 24px; }
+  .hero__stat { flex: 1 1 100%; }
+  .countdown__block { min-width: 60px; padding: 10px 5px; }
+  .countdown__block span { font-size: 20px; }
 }
