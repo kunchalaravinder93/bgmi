@@ -2,8 +2,8 @@
    COUNTDOWN TIMER
 ═══════════════════════════════════════════ */
 (function() {
-  // Target: June 14, 2025 at 10:00 AM IST
-  const TARGET = new Date('2025-06-14T10:00:00+05:30').getTime();
+  // Target: Next Saturday, May 16, 2026 at 10:00 PM IST (Solo Match Start)
+  const TARGET = new Date('2026-05-16T22:00:00+05:30').getTime();
 
   const days  = document.getElementById('cd-days');
   const hours = document.getElementById('cd-hours');
