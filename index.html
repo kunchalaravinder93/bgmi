@@ -355,7 +355,7 @@
           <div class="winner-players">
             <span>AkOP</span><span>ClutchGod</span><span>Mavi</span><span>Zgod</span>
           </div>
-          <div class="winner-prize">₹20,00,000</div>
+          <div class="winner-prize">₹3000</div>
         </div>
       </div>
     </div>
@@ -371,9 +371,9 @@
           <p>Registration for Solo and Squad is now open. Simply click the button to fill the Google Form and secure
             your spot.</p>
           <ul class="register__perks">
-            <li><span>✓</span> Entry Fee: ₹499 per team</li>
-            <li><span>✓</span> Free Inferno Cup Jersey for all participants</li>
-            <li><span>✓</span> 1:1 coaching session with pro players</li>
+            <li><span>✓</span> Entry Fee: ₹200 per team</li>
+            <li><span>✓</span> Free room spots for all participants</li>
+            <li><span>✓</span> players promtion in website</li>
           </ul>
           <div class="slots-left">
             <div class="slots-bar">
@@ -449,6 +449,52 @@
 
   <script src="js/countdown.js"></script>
   <script src="js/ui.js"></script>
+  <script>
+    /**
+     * AUTOMATIC SLOT SYNC
+     * This script fetches the number of registrations from your Google Sheet.
+     * 1. Go to your Google Sheet (where Form responses are saved).
+     * 2. File > Share > Publish to web.
+     * 3. Select 'Entire Document' and 'CSV'.
+     * 4. Copy the link and paste it below in SHEET_CSV_URL.
+     */
+    async function syncSlots() {
+      const SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vR5s3dTAGBlbxgdt_E09GatM76lC_iBRSqg6cJIrOxBZUiarAjP52jAdX8PdYlM7Yov4SGhwWfW449l/pub?gid=1703675288&single=true&output=csv'; // PASTE YOUR LINK HERE
+      const TOTAL_SLOTS = 100;
+      
+      const slotsFill = document.querySelector('.slots-fill');
+      const slotsText = document.querySelector('.slots-text');
+
+      try {
+        // If URL is placeholder, use a default value
+        if (SHEET_CSV_URL.includes('YOUR_PUBLISHED')) {
+           updateUI(58); // Default fallback
+           return;
+        }
+
+        const response = await fetch(SHEET_CSV_URL);
+        const data = await response.text();
+        
+        // Count rows in CSV (Subtract 1 for the header row)
+        // Filter empty lines to avoid miscounting
+        const rows = data.trim().split('\n').filter(row => row.trim() !== '');
+        const filledSlots = Math.max(0, rows.length - 1);
+        
+        updateUI(filledSlots);
+      } catch (error) {
+        console.error('Slot sync failed:', error);
+        updateUI(58); // Fallback on error
+      }
+
+      function updateUI(filled) {
+        const remaining = Math.max(0, TOTAL_SLOTS - filled);
+        if(slotsFill) slotsFill.style.width = (filled / TOTAL_SLOTS * 100) + '%';
+        if(slotsText) slotsText.textContent = remaining + ' slots remaining';
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', syncSlots);
+  </script>
 </body>
 
 </html>

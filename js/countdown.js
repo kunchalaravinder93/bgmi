@@ -44,21 +44,41 @@
     const diff = TARGET - now;
 
     if (diff <= 0) {
-      [days, hours, mins, secs].forEach(el => { if (el) el.textContent = '00'; });
+      if (days)  days.textContent = '00';
+      if (hours) hours.textContent = '00';
+      if (mins)  mins.textContent = '00';
+      if (secs)  secs.textContent = '00';
       return;
     }
 
-    const d = Math.floor(diff / 86400000);
-    const h = Math.floor((diff % 86400000) / 3600000);
-    const m = Math.floor((diff % 3600000) / 60000);
-    const s = Math.floor((diff % 60000) / 1000);
+    const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const s = Math.floor((diff % (1000 * 60)) / 1000);
 
-    if (days)  flip(days,  pad(d));
-    if (hours) flip(hours, pad(h));
-    if (mins)  flip(mins,  pad(m));
-    if (secs)  flip(secs,  pad(s));
+    // Initial update without flip for speed, then use flip
+    if (!tick.initialized) {
+      if (days)  days.textContent = pad(d);
+      if (hours) hours.textContent = pad(h);
+      if (mins)  mins.textContent = pad(m);
+      if (secs)  secs.textContent = pad(s);
+      tick.initialized = true;
+    } else {
+      if (days)  flip(days,  pad(d));
+      if (hours) flip(hours, pad(h));
+      if (mins)  flip(mins,  pad(m));
+      if (secs)  flip(secs,  pad(s));
+    }
   }
 
-  tick();
-  setInterval(tick, 1000);
+  // Ensure DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+      tick();
+      setInterval(tick, 1000);
+    });
+  } else {
+    tick();
+    setInterval(tick, 1000);
+  }
 })();

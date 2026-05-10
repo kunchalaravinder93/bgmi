@@ -144,24 +144,9 @@ const statsObserver = new IntersectionObserver(entries => {
       const statVals = document.querySelectorAll('.stat-val');
       statVals.forEach(el => {
         const text = el.textContent;
-        if (text.includes('₹')) animateCounter(el, 50, 'L');
-        else if (text === '25') animateCounter(el, 25, '');
+        if (text.includes('₹3000')) animateCounter(el, 3000, '');
+        else if (text === '100') animateCounter(el, 100, '');
         else if (text === '2') animateCounter(el, 2, '');
-        const prefix = text.startsWith('₹') ? '₹' : '';
-        if (prefix) {
-          const orig = animateCounter;
-          // re-do with prefix
-          let start = 0;
-          const duration = 1600;
-          const step = timestamp => {
-            if (!start) start = timestamp;
-            const progress = Math.min((timestamp - start) / duration, 1);
-            const eased = 1 - Math.pow(1 - progress, 3);
-            el.textContent = `₹${Math.round(eased * 50)}L`;
-            if (progress < 1) requestAnimationFrame(step);
-          };
-          requestAnimationFrame(step);
-        }
       });
       statsObserver.disconnect();
     }
