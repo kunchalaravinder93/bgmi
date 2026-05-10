@@ -1420,44 +1420,51 @@ input::placeholder { color: rgba(255,255,255,0.25); }
 }
 
 @media (max-width: 768px) {
-  .section { padding: 60px 0; }
-  .section-header { margin-bottom: 40px; }
+  .section { padding: 50px 0; }
+  .section-header { margin-bottom: 32px; }
   .nav__links { display: none; }
-  .nav__inner { padding: 12px 20px; }
+  .nav__inner { padding: 10px 16px; }
   .nav__burger { display: flex; }
   
-  .hero__content { padding: 0 20px; }
-  .hero__stats { gap: 20px; }
-  .hero__stat { flex: 1 1 100px; }
+  .hero { padding: 100px 16px 40px; min-height: auto; }
+  .hero__content { width: 100%; }
+  .hero__badge { margin-bottom: 16px; padding: 4px 12px; font-size: 10px; }
+  
+  .hero__title--line1 { font-size: clamp(48px, 18vw, 80px); letter-spacing: -2px; }
+  .hero__title--line2 { font-size: clamp(28px, 10vw, 48px); letter-spacing: -1px; }
+  .hero__title--line3 { font-size: 14px; letter-spacing: 6px; margin-top: 8px; }
+  
+  .hero__sub { margin-bottom: 24px; font-size: 14px; padding: 0 10px; }
+  
+  .hero__stats { gap: 12px; margin-bottom: 32px; }
+  .hero__stat { flex: 1 1 calc(50% - 12px); }
+  .stat-val { font-size: 24px; }
+  .stat-label { font-size: 9px; letter-spacing: 1px; }
   .hero__divider { display: none; }
   
-  .hero__title--line1 { font-size: clamp(50px, 15vw, 80px); }
-  .hero__title--line2 { font-size: clamp(30px, 10vw, 50px); }
-  .hero__title--line3 { letter-spacing: 8px; }
+  .hero__actions { gap: 12px; width: 100%; max-width: 280px; margin: 0 auto; }
+  .btn { padding: 12px 24px; font-size: 14px; }
   
-  .hero__actions { flex-direction: column; align-items: stretch; width: 100%; max-width: 320px; margin: 0 auto; }
-  .btn { width: 100%; justify-content: center; }
+  .hero__countdown { margin-top: 40px; width: 100%; }
+  .countdown__blocks { gap: 6px; justify-content: center; }
+  .countdown__block { padding: 10px 8px; min-width: 60px; flex: 0 1 auto; }
+  .countdown__block span { font-size: 20px; }
+  .countdown__block small { font-size: 8px; letter-spacing: 1px; }
   
-  .countdown__blocks { gap: 8px; flex-wrap: wrap; justify-content: center; }
-  .countdown__block { padding: 12px 10px; min-width: 70px; flex: 0 1 auto; }
-  .countdown__block span { font-size: 24px; }
-  .countdown__sep { display: none; }
-  
-  .prize-podium { flex-direction: column; align-items: center; gap: 30px; }
+  .prize-podium { flex-direction: column; align-items: center; gap: 24px; }
+  .prize-card { width: 100%; max-width: 320px; }
   .prize-card--1 { transform: none; order: -1; }
-  .prize-card--1:hover { transform: none; }
-  .testimonial-card { flex: 0 0 100%; padding: 24px; }
-  .footer__links { grid-template-columns: 1fr; gap: 32px; text-align: center; }
-  .footer__inner { grid-template-columns: 1fr; gap: 40px; text-align: center; }
-  .footer__brand { display: flex; flex-direction: column; align-items: center; }
-  .footer__bottom { flex-direction: column; gap: 12px; text-align: center; }
-  .register__cta-card { padding: 24px; }
-  .winners-grid { grid-template-columns: 1fr; }
+  
+  .testimonial-card { flex: 0 0 100%; padding: 20px; }
+  .footer__inner { grid-template-columns: 1fr; gap: 32px; text-align: center; }
+  .footer__links { grid-template-columns: 1fr; gap: 24px; }
+  .footer__brand { align-items: center; }
 }
 
 @media (max-width: 480px) {
-  .section-title { font-size: 24px; }
+  .hero__title--line1 { font-size: 42px; }
+  .hero__title--line2 { font-size: 24px; }
   .hero__stat { flex: 1 1 100%; }
-  .countdown__block { min-width: 60px; padding: 10px 5px; }
-  .countdown__block span { font-size: 20px; }
+  .countdown__blocks { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  .countdown__block { min-width: 0; }
 }
