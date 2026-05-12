@@ -146,7 +146,7 @@ const statsObserver = new IntersectionObserver(entries => {
         const text = el.textContent;
         if (text.includes('₹3000')) animateCounter(el, 3000, '');
         else if (text === '100') animateCounter(el, 100, '');
-        else if (text === '2') animateCounter(el, 2, '');
+        else if (text === '4') animateCounter(el, 4, '');
       });
       statsObserver.disconnect();
     }
@@ -232,5 +232,5 @@ document.addEventListener('keydown', e => {
   if (e.key === 'Escape') closeModal();
 });
 
-console.log('%c⬡ BGMI INFERNO CUP 2025', 'color:#ff4500;font-size:20px;font-weight:bold;font-family:monospace');
-console.log('%cBuilt for the Indian BGMI community', 'color:#888;font-size:12px');
+console.log('%c⬡ ESPORTS PRO LEAGUE 2026', 'color:#ff4500;font-size:20px;font-weight:bold;font-family:monospace');
+console.log('%cBuilt for the Indian BGMI & Free Fire community', 'color:#888;font-size:12px');

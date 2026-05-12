@@ -27,10 +27,21 @@
   --font-head:     'Rajdhani', sans-serif;
   --font-body:     'Exo 2', sans-serif;
 
+  --clr-ff:        #ffcc00;
+  --glow-ff:       0 0 20px rgba(255,204,0,0.6), 0 0 60px rgba(255,204,0,0.2);
+
   --radius:        12px;
   --radius-lg:     20px;
   --transition:    0.3s cubic-bezier(0.4,0,0.2,1);
 }
+
+.ff-card {
+  border-color: rgba(255,204,0,0.4) !important;
+  background: linear-gradient(90deg, rgba(255,204,0,0.08) 0%, transparent 100%) !important;
+}
+.ff-card .schedule-card__time { color: var(--clr-ff); }
+.ff-card .status--live { border-color: var(--clr-ff); color: var(--clr-ff); text-shadow: var(--glow-ff); }
+
 
 /* ── Reset ── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
